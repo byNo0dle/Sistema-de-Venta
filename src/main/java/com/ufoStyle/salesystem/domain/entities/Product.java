@@ -1,5 +1,6 @@
 package com.ufoStyle.salesystem.domain.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -9,7 +10,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "products")
+@Table(name = "tbl_products")
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -29,5 +30,6 @@ public class Product {
     private Date createAt;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
+    @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
     private Category category;
 }
