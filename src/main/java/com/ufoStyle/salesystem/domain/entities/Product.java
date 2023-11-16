@@ -1,10 +1,19 @@
 package com.ufoStyle.salesystem.domain.entities;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
 @Table(name = "products")
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@Data
 public class Product {
 
     @Id
