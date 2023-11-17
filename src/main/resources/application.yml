@@ -29,7 +29,7 @@ datasource:
 jpa:
   show-sql: true # Que muestre los SQL que vamos a insert, update en la BD y que lo muestre en el log
   hibernate:
-    ddl-auto: update # Hace un update en el esquema de BD de acuerdo al mapper de nuestras clases
+    ddl-auto: create-drop # Hace un update en el esquema de BD de acuerdo al mapper de nuestras clases
   database-platform: org.hibernate.dialect.H2Dialect
   properties:
     hibernate:
