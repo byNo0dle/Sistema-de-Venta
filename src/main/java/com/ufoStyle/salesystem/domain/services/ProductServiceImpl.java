@@ -37,7 +37,7 @@ public class ProductServiceImpl implements ProductService{
     @Override
     public Product updateProduct(Product product) {
         Product productDB = getProduct(product.getId());
-        if (null == productDB) {
+        if (null == productDB){
             return null;
         }
         productDB.setName(product.getName());
@@ -50,7 +50,7 @@ public class ProductServiceImpl implements ProductService{
     @Override
     public Product deleteProduct(Long id) {
         Product productDB = getProduct(id);
-        if (null == productDB) {
+        if (null == productDB){
             return null;
         }
         productDB.setStatus("DELETED");
@@ -65,10 +65,10 @@ public class ProductServiceImpl implements ProductService{
     @Override
     public Product updateStock(Long id, Double quantity) {
         Product productDB = getProduct(id);
-        if (null == productDB) {
+        if (null == productDB){
             return null;
         }
-        Double stock = productDB.getStock() + quantity;
+        Double stock =  productDB.getStock() + quantity;
         productDB.setStock(stock);
         return productRepository.save(productDB);
     }

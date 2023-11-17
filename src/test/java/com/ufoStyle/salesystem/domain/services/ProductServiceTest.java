@@ -20,34 +20,37 @@ class ProductServiceTest {
 
     @Mock
     private ProductRepository productRepository;
+
     private ProductService productService;
 
     @BeforeEach
-    public void setup() {
+    public void setup(){
         MockitoAnnotations.initMocks(this);
-        productService = new ProductServiceImpl(productRepository);
-        Product computer = Product.builder()
+        productService =  new ProductServiceImpl( productRepository);
+        Product computer =  Product.builder()
                 .id(1L)
                 .name("computer")
-                .category(Category.builder().build())
+                .category(Category.builder().id(1L).build())
                 .price(Double.parseDouble("12.5"))
                 .stock(Double.parseDouble("5"))
                 .build();
+
         Mockito.when(productRepository.findById(1L))
                 .thenReturn(Optional.of(computer));
-        Mockito.when(productRepository.save(computer))
-                .thenReturn(computer);
+        Mockito.when(productRepository.save(computer)).thenReturn(computer);
+
     }
 
     @Test
-    public void whenValidGetId_ThenReturnProduct() {
+    public void whenValidGetID_ThenReturnProduct(){
         Product found = productService.getProduct(1L);
         Assertions.assertThat(found.getName()).isEqualTo("computer");
+
     }
 
     @Test
-    public void whenValidUpdateStock_ThenReturnNewStock() {
-        Product newStock = productService.updateStock(1L, Double.parseDouble("8"));
+    public void whenValidUpdateStock_ThenReturnNewStock(){
+        Product newStock = productService.updateStock(1L,Double.parseDouble("8"));
         Assertions.assertThat(newStock.getStock()).isEqualTo(13);
     }
 }
