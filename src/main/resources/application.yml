@@ -1,11 +1,13 @@
-#Application Configuration
+#Application Configuration // En que puerto se va a ejecutar
 server:
   port: 9003
 
 #To See H2 Console in Browser:
-#http://localhost:8091/h2-console
+#http://localhost:8091/h2-console // Habilitando el H2 Console para poder ver los datos enbebidos H2.
 #Enabling H2 Console
 spring:
+  jpa:
+    defer-datasource-initialization: true
   h2:
     console:
       enabled: true
@@ -14,19 +16,19 @@ spring:
 # DB
 # ==================================
 datasource:
-  url: jdbc:h2:mem:productDB;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+  url: jdbc:h2:mem:SALESYSTEM
   driverClassName: org.h2.Driver
   platform: h2
-  username: sa
+  username: noodle
   password:
 
 # ==================================
 # JPA / HIBERNATE
 # ==================================
 jpa:
-  show-sql: true
+  show-sql: true # Que muestre los SQL que vamos a insert, update en la BD y que lo muestre en el log
   hibernate:
-    ddl-auto: update
+    ddl-auto: update # Hace un update en el esquema de BD de acuerdo al mapper de nuestras clases
   database-platform: org.hibernate.dialect.H2Dialect
   properties:
     hibernate:
